@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angel Rodriguez — Hudson County Listing Specialist | Coldwell Banker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cb-dark:#8a6e1c;
+  --cb-blue:#c9a84c;
+  --cb-mid:#d4b460;
+  --cb-bright:#ddc070;
+  --cb-accent:#c9a84c;
+  --cb-light:#2a2418;
+  --cb-lighter:#1e1a12;
+  --white:#1e2126;
+  --surface:#13151a;
+  --surface-2:#191c22;
+  --text:#ede8de;
+  --text-2:#8c8a85;
+  --text-3:#555250;
+  --border:rgba(201,168,76,0.14);
+  --border-2:rgba(201,168,76,0.22);
+  --green:#4ade80;--green-bg:#0a1a0d;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);-webkit-font-smoothing:antialiased}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(19,21,26,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);text-decoration:none;letter-spacing:-0.01em;flex-shrink:0}
+.nav-logo span{color:var(--cb-accent)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--cb-blue)}
+.nav-cta{background:var(--cb-blue);color:var(--white);border:none;padding:9px 20px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;white-space:nowrap;transition:background .15s}
+.nav-cta:hover{background:var(--cb-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;border:none;background:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--cb-blue);border-radius:2px}
+.mobile-menu{display:none;flex-direction:column;gap:0;border-top:1px solid var(--border);background:var(--surface)}
+.mobile-menu a{display:block;padding:14px 32px;font-size:14px;font-weight:500;color:var(--text-2);text-decoration:none;border-bottom:1px solid var(--border)}
+.mobile-menu a:hover{background:var(--surface)}
+.mobile-menu .mob-cta{margin:16px 32px 20px;display:block;background:var(--cb-blue);color:var(--white);padding:12px;border-radius:6px;text-align:center;font-weight:600;font-size:14px;text-decoration:none}
+
+/* ── HERO ── */
+.hero{padding:140px 32px 96px;text-align:center;max-width:800px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cb-mid);border:1px solid var(--border-2);background:var(--surface);padding:5px 16px;border-radius:4px;margin-bottom:28px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(38px,6vw,62px);line-height:1.07;letter-spacing:-0.025em;color:var(--text);margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--cb-accent)}
+.hero-sub{font-size:18px;line-height:1.7;color:var(--text-2);max-width:580px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--cb-blue);color:var(--white);padding:14px 32px;border-radius:7px;font-size:15px;font-weight:600;text-decoration:none;transition:background .15s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:var(--cb-dark)}
+.btn-outline{background:transparent;color:var(--cb-blue);padding:14px 32px;border-radius:7px;font-size:15px;font-weight:600;text-decoration:none;border:1.5px solid var(--border-2);transition:border-color .15s,background .15s}
+.btn-outline:hover{background:var(--surface);border-color:var(--cb-blue)}
+
+/* ── HERO BG ── */
+.hero-section{background:linear-gradient(to bottom,rgba(19,21,26,0.55) 0%,rgba(19,21,26,0.88) 60%,rgba(19,21,26,1) 100%),url('https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat}
+
+/* ── STATS BAR ── */
+.stats-bar{background:#0f1114;border-top:1px solid var(--border);padding:32px}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:24px;text-align:center}
+.stat-val{font-family:'DM Serif Display',serif;font-size:32px;color:var(--white);letter-spacing:-0.02em}
+.stat-lbl{font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:88px 32px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cb-accent);margin-bottom:12px}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,40px);letter-spacing:-0.02em;color:var(--text);margin-bottom:16px;line-height:1.15}
+.section-sub{font-size:16px;line-height:1.7;color:var(--text-2);max-width:600px;margin-bottom:48px}
+
+/* ── WHY SECTION ── */
+.why-section{background:var(--surface-2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:0}
+.why-card{background:var(--white);border:1px solid var(--border-2);border-radius:16px;padding:32px 28px;transition:border-color .15s,transform .15s}
+.why-card:hover{border-color:var(--cb-accent);transform:translateY(-2px)}
+.why-icon{font-size:32px;margin-bottom:18px}
+.why-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);margin-bottom:10px;line-height:1.2}
+.why-body{font-size:14px;color:var(--text-2);line-height:1.75}
+
+/* ── PROMISE SECTION ── */
+.promise-section{background:#0a0c0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 32px;text-align:center}
+.promise-inner{max-width:820px;margin:0 auto}
+.promise-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cb-accent);border:1px solid var(--border-2);padding:5px 18px;border-radius:4px;margin-bottom:28px}
+.promise-headline{font-family:'DM Serif Display',serif;font-size:clamp(30px,5vw,54px);line-height:1.12;letter-spacing:-0.025em;color:var(--text);margin-bottom:18px}
+.promise-headline em{font-style:italic;color:var(--cb-accent)}
+.promise-sub{font-size:17px;color:var(--text-2);line-height:1.6}
+.promise-pillars{display:flex;align-items:stretch;gap:0;margin-top:44px;background:var(--white);border:1px solid var(--border-2);border-radius:16px;overflow:hidden;text-align:left}
+.promise-pillar{flex:1;padding:32px 36px}
+.promise-pillar-icon{font-size:28px;margin-bottom:14px}
+.promise-pillar-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);margin-bottom:8px}
+.promise-pillar-body{font-size:14px;color:var(--text-2);line-height:1.7}
+.promise-divider{width:1px;background:var(--border-2);flex-shrink:0}
+@media(max-width:768px){.promise-pillars{flex-direction:column}.promise-divider{width:auto;height:1px}}
+
+/* ── MARKETING SECTION ── */
+.marketing-section{background:var(--surface-2)}
+.marketing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.marketing-channel{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:border-color .15s,transform .15s}
+.marketing-channel:hover{border-color:var(--cb-accent);transform:translateY(-2px)}
+.mc-icon{font-size:28px;margin-bottom:14px}
+.mc-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px}
+.mc-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:12px}
+.mc-reach{font-size:12px;font-weight:600;color:var(--cb-accent);padding-top:12px;border-top:1px solid var(--border)}
+.marketing-total{background:var(--white);border:1px solid var(--border-2);border-radius:14px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.mt-label{font-size:12px;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.mt-val{font-family:'DM Serif Display',serif;font-size:32px;color:var(--text);letter-spacing:-0.02em}
+@media(max-width:900px){.marketing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.marketing-grid{grid-template-columns:1fr}.marketing-total{flex-direction:column;text-align:center}}
+
+/* ── OFFER SECTION ── */
+.offer-section{background:var(--surface)}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.offer-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 26px;display:flex;gap:16px;align-items:flex-start}
+.offer-icon{width:40px;height:40px;border-radius:8px;background:var(--cb-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--white)}
+.offer-title{font-size:15px;font-weight:600;color:var(--cb-blue);margin-bottom:4px}
+.offer-desc{font-size:13px;color:var(--text-2);line-height:1.6}
+.offer-value{font-size:12px;font-weight:600;color:var(--cb-accent);margin-top:6px}
+.offer-total{background:var(--cb-blue);border-radius:12px;padding:28px 32px;margin-top:14px;display:flex;justify-content:space-between;align-items:center}
+.offer-total-label{font-size:14px;color:rgba(255,255,255,0.5)}
+.offer-total-val{font-family:'DM Serif Display',serif;font-size:36px;color:var(--white);letter-spacing:-0.02em}
+.guarantee-box{background:var(--green-bg);border:1px solid rgba(26,107,58,0.2);border-radius:14px;padding:36px 40px;margin-top:48px;display:flex;gap:28px;align-items:flex-start}
+.guarantee-icon{font-size:36px;flex-shrink:0}
+.guarantee-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--green);margin-bottom:8px}
+.guarantee-body{font-size:14px;color:var(--green);line-height:1.75;opacity:.85}
+
+/* ── LEAD MAGNETS ── */
+.magnets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.magnet-card{background:var(--white);border:1px solid var(--border-2);border-radius:14px;padding:28px;transition:border-color .15s,transform .15s;cursor:pointer;text-decoration:none;display:block}
+.magnet-card:hover{border-color:var(--cb-blue);transform:translateY(-2px)}
+.magnet-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:14px}
+.tag-data{background:var(--cb-lighter);color:var(--cb-mid)}
+.tag-fear{background:#fff4e0;color:#7a5200}
+.tag-social{background:var(--green-bg);color:var(--green)}
+.tag-problem{background:#ede8ff;color:#3d1fa8}
+.tag-aspire{background:#fce8f0;color:#8a1f4a}
+.magnet-title{font-size:17px;font-weight:500;color:var(--cb-blue);margin-bottom:8px;line-height:1.3}
+.magnet-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:16px}
+.magnet-cta{font-size:13px;font-weight:600;color:var(--cb-blue);display:flex;align-items:center;gap:6px}
+.magnet-cta svg{transition:transform .15s}
+.magnet-card:hover .magnet-cta svg{transform:translateX(3px)}
+
+/* ── PROCESS ── */
+.process-section{background:var(--surface)}
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;position:relative}
+.process-step{padding:32px 28px;position:relative}
+.process-step::before{content:'';position:absolute;top:52px;right:0;width:1px;height:40px;background:var(--border-2)}
+.process-step:last-child::before{display:none}
+.step-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--cb-light);line-height:1;margin-bottom:16px}
+.step-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px}
+.step-title{font-size:16px;font-weight:500;color:var(--cb-blue);margin-bottom:8px}
+.step-body{font-size:13px;color:var(--text-2);line-height:1.65}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-avatar{width:100%;aspect-ratio:4/5;background:var(--surface-2);border-radius:16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.avatar-initials{font-family:'DM Serif Display',serif;font-size:72px;color:var(--text-3)}
+.about-body{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:16px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
+.about-stat{background:var(--surface);border-radius:10px;padding:18px;text-align:center}
+.about-stat-val{font-family:'DM Serif Display',serif;font-size:28px;color:var(--cb-blue)}
+.about-stat-lbl{font-size:12px;color:var(--text-3);margin-top:3px}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:#0f1114}
+.testimonials-section .section-eyebrow{color:var(--cb-accent)}
+.testimonials-section .section-title{color:var(--text)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.testimonial-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px}
+.stars{color:#c9a84c;font-size:14px;letter-spacing:2px;margin-bottom:16px}
+.testimonial-quote{font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:var(--text);margin-bottom:20px;font-style:italic}
+.testimonial-author{font-size:13px;color:var(--text-3)}
+.testimonial-author strong{color:var(--text-2)}
+
+/* ── CONTACT ── */
+.cta-section{padding:100px 32px;text-align:center;background:var(--surface)}
+.cta-inner{max-width:680px;margin:0 auto}
+.cta-form{background:var(--white);border:1px solid var(--border-2);border-radius:16px;padding:40px;max-width:520px;margin:0 auto;box-shadow:0 4px 32px rgba(0,51,153,0.07)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0}
+.cta-form input,.cta-form select,.cta-form textarea{width:100%;padding:12px 16px;border:1.5px solid var(--border-2);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);outline:none;transition:border-color .15s;margin-bottom:12px}
+.cta-form input:focus,.cta-form select:focus,.cta-form textarea:focus{border-color:var(--cb-blue);background:var(--white)}
+.cta-form textarea{resize:vertical;min-height:80px;margin-bottom:0}
+.cta-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b85b5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.cta-form label{display:block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-2);margin-bottom:6px}
+.cta-form .form-group{margin-bottom:12px}
+.submit-btn{width:100%;padding:15px;background:var(--cb-blue);color:var(--white);border:none;border-radius:8px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;margin-top:16px;transition:background .15s}
+.submit-btn:hover{background:var(--cb-dark)}
+.form-note{font-size:12px;color:var(--text-3);text-align:center;margin-top:12px}
+.success-box{display:none;text-align:center;padding:32px 0}
+.success-box .s-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--cb-blue);margin-bottom:8px}
+.success-box .s-body{font-size:14px;color:var(--text-2);line-height:1.7}
+
+/* ── FOOTER ── */
+footer{background:#0a0c0f;padding:48px 32px 0}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand .nav-logo{display:block;margin-bottom:14px;color:var(--white)}
+.footer-brand .nav-logo span{color:rgba(255,255,255,0.5)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.7}
+.footer-col h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:9px;transition:color .15s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:24px 0}
+.footer-copy-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+
+/* ── CB BADGE ── */
+.cb-badge-strip{background:#0a0c0f;border-top:1px solid var(--border);padding:20px 32px}
+.cb-badge-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.cb-badge{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:14px 22px}
+.cb-logo-block{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#ffffff;border-radius:6px;padding:7px 12px;min-width:72px}
+.cb-logo-top{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--cb-blue);line-height:1.1}
+.cb-logo-bottom{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--cb-blue);line-height:1.1}
+.cb-logo-tag{font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cb-accent);margin-top:3px}
+.cb-badge-text{text-align:left}
+.cb-badge-name{font-size:14px;font-weight:600;color:var(--white);letter-spacing:.01em}
+.cb-badge-sub{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px}
+.cb-divider{width:1px;height:32px;background:rgba(255,255,255,0.15)}
+.cb-equal-housing{display:flex;align-items:center;gap:8px}
+.cb-eh-icon{width:28px;height:28px;flex-shrink:0}
+.cb-eh-text{font-size:10px;color:rgba(255,255,255,0.35);line-height:1.4;max-width:120px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.open{display:flex}
+  .hero{padding:100px 20px 72px}
+  .section{padding:64px 20px}
+  .offer-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-avatar{aspect-ratio:3/2}
+  .footer-top{grid-template-columns:1fr;gap:32px}
+  .footer-copy-row{flex-direction:column;align-items:flex-start}
+  .process-step::before{display:none}
+  .form-row{grid-template-columns:1fr}
+  .guarantee-box{flex-direction:column;gap:16px}
+  .offer-total{flex-direction:column;gap:8px;text-align:center}
+  .cb-badge{flex-direction:column;text-align:center}
+  .cb-badge-text{text-align:center}
+  .cb-divider{width:80px;height:1px}
+}
+@media(max-width:480px){
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-outline{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Angel <span>Rodriguez</span></a>
+    <div class="nav-links">
+      <a href="#why-angel">Why Angel</a>
+      <a href="#offer">What's included</a>
+      <a href="#process">How it works</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book a free call</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#why-angel" onclick="toggleMenu()">Why Angel</a>
+    <a href="#offer" onclick="toggleMenu()">What's included</a>
+    <a href="#process" onclick="toggleMenu()">How it works</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#contact" class="mob-cta" onclick="toggleMenu()">Book a free call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero">
+    <div class="eyebrow">Hudson County Listing Specialist · Coldwell Banker · New Jersey</div>
+    <h1>More money. Less time.<br><em>Zero stress.</em></h1>
+    <p class="hero-sub">I help Hudson County homeowners sell for more than they thought possible — with a proven system, a performance guarantee, and full white-glove service from day one.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book your free strategy call</a>
+      <a href="#why-angel" class="btn-outline">See what makes me different</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div><div class="stat-val">$47K</div><div class="stat-lbl">avg. over asking this year</div></div>
+    <div><div class="stat-val">14 days</div><div class="stat-lbl">avg. days on market</div></div>
+    <div><div class="stat-val">103%</div><div class="stat-lbl">avg. list-to-sale ratio</div></div>
+    <div><div class="stat-val">60 days</div><div class="stat-lbl">max contract length</div></div>
+    <div><div class="stat-val">24 hrs</div><div class="stat-lbl">guaranteed response</div></div>
+  </div>
+</div>
+
+<!-- WHY ANGEL SECTION -->
+<section class="section why-section" id="why-angel">
+  <div class="section-inner">
+    <div class="section-eyebrow">Why homeowners choose Angel</div>
+    <div class="section-title">A different kind of agent.<br>Built around <em style="font-style:italic;color:var(--cb-accent)">your</em> results.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">45-Day Performance Guarantee</div>
+        <div class="why-body">If I don't bring you a qualified offer within 45 days, I cut my commission by 1%. No fine print. No exceptions. You only pay full commission when I deliver.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <div class="why-title">60-Day Contract — Not 6 Months</div>
+        <div class="why-body">Most agents lock you in for 6 months. I don't. You get a short 60-day agreement. If you're not satisfied with my effort, you're free to walk — no penalty.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <div class="why-title">Moving Fund Included</div>
+        <div class="why-body">I contribute toward your moving costs and personally coordinate your entire move — so closing day feels like a celebration, not a logistical nightmare.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="#contact" class="btn-primary">Book a free strategy call</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAID MARKETING SECTION -->
+<section class="section marketing-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Paid Marketing Strategy</div>
+    <div class="section-title">Your home in front of thousands<br>of <em style="font-style:italic;color:var(--cb-accent)">ready-to-buy</em> buyers.</div>
+    <p class="section-sub">Most agents rely on the MLS and hope. I run targeted paid campaigns across every major platform — so your home gets seen by qualified buyers before anyone else's listing does.</p>
+    <div class="marketing-grid">
+      <div class="marketing-channel">
+        <div class="mc-icon">📘</div>
+        <div class="mc-name">Facebook & Instagram Ads</div>
+        <div class="mc-desc">Hyper-targeted ads served to buyers actively searching in your zip code, price range, and home size — not random scrollers.</div>
+        <div class="mc-reach">Est. 8,000–15,000 impressions per listing</div>
+      </div>
+      <div class="marketing-channel">
+        <div class="mc-icon">🔍</div>
+        <div class="mc-name">Google Search & Display</div>
+        <div class="mc-desc">Your listing appears at the top of Google when buyers search for homes in your neighborhood. Paid placement, not luck.</div>
+        <div class="mc-reach">Top placement on day one</div>
+      </div>
+      <div class="marketing-channel">
+        <div class="mc-icon">🎯</div>
+        <div class="mc-name">Retargeting Campaigns</div>
+        <div class="mc-desc">Buyers who viewed your listing get followed across the web with your home's best photos — keeping it top of mind until they make a move.</div>
+        <div class="mc-reach">30-day retargeting window</div>
+      </div>
+      <div class="marketing-channel">
+        <div class="mc-icon">📧</div>
+        <div class="mc-name">Buyer Email Blast</div>
+        <div class="mc-desc">Your home goes out to my curated list of 500+ pre-qualified active buyers the moment it's ready — before MLS goes live.</div>
+        <div class="mc-reach">500+ active buyers notified</div>
+      </div>
+      <div class="marketing-channel">
+        <div class="mc-icon">🎬</div>
+        <div class="mc-name">Video & Reel Campaigns</div>
+        <div class="mc-desc">Professional video walkthroughs turned into social ads that stop the scroll and drive serious inquiries — not just likes.</div>
+        <div class="mc-reach">Distributed across Instagram, Facebook & YouTube</div>
+      </div>
+      <div class="marketing-channel">
+        <div class="mc-icon">🏡</div>
+        <div class="mc-name">Premium Portal Placement</div>
+        <div class="mc-desc">Featured listings on Zillow, Redfin, and Realtor.com with paid boosts to stay at the top of search results in your area.</div>
+        <div class="mc-reach">Featured on all major portals</div>
+      </div>
+    </div>
+    <div class="marketing-total">
+      <div class="mt-left">
+        <div class="mt-label">Combined estimated reach per listing</div>
+        <div class="mt-val">20,000+ potential buyers</div>
+      </div>
+      <a href="#contact" class="btn-primary">See how it works for your home</a>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER SECTION -->
+<section class="section offer-section" id="offer">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Elite Home Selling System™</div>
+    <div class="section-title">Everything included.<br>Nothing left to chance.</div>
+    <p class="section-sub">Most agents put your home on Zillow and hope. I run a proven 8-step system that creates competition among buyers and maximizes what you walk away with.</p>
+    <div class="offer-grid">
+      <div class="offer-item"><div class="offer-icon">📷</div><div><div class="offer-title">Professional photography + video</div><div class="offer-desc">HDR photos, twilight shot, and a full video walkthrough delivered within 48 hours of listing.</div><div class="offer-value">$800 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">🛋️</div><div><div class="offer-title">Staging consultation</div><div class="offer-desc">A professional stager walks your home room by room and builds your pre-listing prep plan.</div><div class="offer-value">$400 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">🚀</div><div><div class="offer-title">7-day pre-market campaign</div><div class="offer-desc">Your home is marketed to my buyer network before it ever hits MLS — so demand starts on day one.</div><div class="offer-value">$600 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">🔧</div><div><div class="offer-title">Repairs & prep coordination</div><div class="offer-desc">I manage every contractor, every appointment, every detail. You don't lift a finger.</div><div class="offer-value">$500 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">📊</div><div><div class="offer-title">Custom pricing strategy</div><div class="offer-desc">Hyper-local comp analysis and a pricing playbook designed to attract multiple offers.</div><div class="offer-value">$300 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">📣</div><div><div class="offer-title">Multi-channel marketing</div><div class="offer-desc">MLS, Zillow, Redfin, Instagram, Facebook, and an email blast to 500+ active buyers.</div><div class="offer-value">$1,200 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">📋</div><div><div class="offer-title">Weekly seller report</div><div class="offer-desc">Every Friday: showings, feedback, market updates, and next steps. You're never in the dark.</div><div class="offer-value">$200 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">🤝</div><div><div class="offer-title">Expert negotiation & closing</div><div class="offer-desc">I handle every offer, counter, contingency, and closing detail so you don't lose money at the table.</div><div class="offer-value">$2,000 value — included</div></div></div>
+      <div class="offer-item"><div class="offer-icon">📦</div><div><div class="offer-title">Moving fund & coordination</div><div class="offer-desc">I contribute toward your moving costs and personally coordinate your move so the transition is completely stress-free.</div><div class="offer-value">Included</div></div></div>
+    </div>
+    <div class="offer-total">
+      <div><div class="offer-total-label">Total value if purchased separately</div></div>
+      <div style="font-family:'DM Serif Display',serif;font-size:36px;color:var(--white);letter-spacing:-0.02em">$6,000+</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCESS -->
+<section class="section process-section" id="process">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <div class="section-title">From first call to closed deal</div>
+    <p class="section-sub">A clear, repeatable process so you always know exactly where you stand and what's happening next.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-label">Week 1</div>
+        <div class="step-title">Strategy call</div>
+        <div class="step-body">We spend 15–20 minutes reviewing your home, your goals, and your timeline. You get a pricing range and a clear plan before we ever sign anything.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-label">Week 2</div>
+        <div class="step-title">Prep & launch</div>
+        <div class="step-body">Photography, staging, repairs, marketing materials — I handle all of it. We launch your pre-market campaign before hitting MLS.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-label">Week 3–4</div>
+        <div class="step-title">Active marketing</div>
+        <div class="step-body">Your home is live across all channels. I manage every showing, collect buyer feedback, and send you a full update every Friday.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-label">Close</div>
+        <div class="step-title">Offers & close</div>
+        <div class="step-body">I negotiate every offer to maximize your net proceeds and manage all contingencies end to end. You show up to sign and collect your check.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-avatar"><div class="avatar-initials">AR</div></div>
+      <div class="about-content">
+        <div class="section-eyebrow">About Angel</div>
+        <div class="section-title">Your listing specialist —<br>not a generalist.</div>
+        <p class="about-body">I specialize in listing homes across Hudson County, New Jersey — from Jersey City and Hoboken to Bayonne, Weehawken, and beyond. That local expertise means I know exactly what buyers in this market are looking for, what they'll pay premiums for, and how to position your home to attract the most competitive offers.</p>
+        <p class="about-body">As a Coldwell Banker agent, I have access to one of the most powerful real estate networks in the world — but I run my business like a specialist, not a volume agent. I take on a maximum of 5 active listings at a time so every seller gets my full attention. And I only ask for a 60-day contract — because I believe you should have the freedom to walk if I'm not delivering.</p>
+        <p class="about-body">My approach is built on one belief: the more informed my sellers are, the better decisions they make — and the more money they walk away with.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat-val">5 max</div><div class="about-stat-lbl">listings at one time</div></div>
+          <div class="about-stat"><div class="about-stat-val">24 hrs</div><div class="about-stat-lbl">guaranteed response</div></div>
+          <div class="about-stat"><div class="about-stat-val">Hudson</div><div class="about-stat-lbl">County specialist</div></div>
+          <div class="about-stat"><div class="about-stat-val">100%</div><div class="about-stat-lbl">focus on sellers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">What clients say</div>
+    <div class="section-title">Real results from real homeowners</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card testimonial-featured">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"We had an excellent experience working with Angel throughout our home-buying process. He was friendly, thoughtful, and incredibly insightful about the local real estate market, helping us make informed decisions every step of the way. From our initial property search through closing day, Angel made the entire experience feel seamless and stress-free, and we couldn't recommend him more highly."</div>
+        <div class="testimonial-author"><strong>Jonathan Kraes</strong> — Bergen-Lafayette, Jersey City, NJ · Condo purchase · June 2026</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"Angel sold our Hoboken place in 23 days — over asking. He handled everything: staging, photos, all the showings. We barely had to lift a finger. If you're selling in Hudson County, call Angel first."</div>
+        <div class="testimonial-author"><strong>Maria & Tom D.</strong> — Hoboken, NJ · sold in 23 days</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"I almost took a cash offer from an investor. Angel ran the numbers and showed me I'd net $94,000 more on the open market. Best decision I made was calling him first."</div>
+        <div class="testimonial-author"><strong>Sandra L.</strong> — Jersey City, NJ · sold in 12 days</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"Angel kept us informed the entire time, handled every detail, and sold our home at asking in 3 weeks. He even coordinated our entire move — we didn't have to stress about a single thing. Truly white-glove service."</div>
+        <div class="testimonial-author"><strong>James & Patricia M.</strong> — Hudson County, NJ · sold in 3 weeks at asking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="text-align:center">One spot available</div>
+    <div class="section-title" style="text-align:center">Ready to find out what your home is worth?</div>
+    <p class="section-sub" style="text-align:center;margin:0 auto 36px">Book a free 15-minute strategy call. No pressure, no obligation — just a clear picture of what your home is worth and what the right move looks like for you.</p>
+    <div class="cta-form">
+      <div id="cta-form-view">
+        <form onsubmit="handleContact(event)">
+          <div class="form-row" style="margin-bottom:12px">
+            <div class="form-group"><label>First name</label><input type="text" placeholder="Sarah" required style="margin-bottom:0"></div>
+            <div class="form-group"><label>Last name</label><input type="text" placeholder="Johnson" required style="margin-bottom:0"></div>
+          </div>
+          <div class="form-group"><label>Phone number</label><input type="tel" placeholder="(201) 555-0100" required></div>
+          <div class="form-group"><label>Email address</label><input type="email" placeholder="sarah@email.com" required></div>
+          <div class="form-group"><label>Your home address</label><input type="text" placeholder="123 Maple St, Montclair, NJ" required></div>
+          <div class="form-group"><label>Thinking of selling within…</label>
+            <select style="margin-bottom:0">
+              <option>Select a timeframe</option>
+              <option>3 months</option><option>6 months</option><option>12 months</option><option>Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-top:12px"><label>Anything else I should know? (optional)</label><textarea placeholder="Tell me a bit about your home or situation…"></textarea></div>
+          <button type="submit" class="submit-btn">Book my free strategy call →</button>
+        </form>
+        <p class="form-note">No spam. No obligation. I'll call you personally within the hour.</p>
+      </div>
+      <div class="success-box" id="cta-success">
+        <div style="font-size:36px;margin-bottom:12px">✓</div>
+        <div class="s-title">You're all set.</div>
+        <p class="s-body">Expect a call from me within the hour. I'll walk you through exactly what your home is worth and what the best next move looks like for your situation.<br><br>— Angel Rodriguez</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Angel <span>Rodriguez</span></a>
+        <p>Hudson County Listing Specialist · Coldwell Banker · Serving Hudson County homeowners with a proven system and a performance guarantee.</p>
+      </div>
+      <div class="footer-col">
+        <h4>What I offer</h4>
+        <a href="#why-angel">45-Day Guarantee</a>
+        <a href="#why-angel">60-Day Contract</a>
+        <a href="#why-angel">Moving Fund</a>
+        <a href="#offer">Home Selling System</a>
+        <a href="#process">How it works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get started</h4>
+        <a href="#about">About Angel</a>
+        <a href="#contact">Book a free call</a>
+        <a href="#contact">Get a home valuation</a>
+        <a href="#contact">Talk to Angel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy-row">
+        <div class="footer-copy">© 2025 Angel Rodriguez · Licensed Real Estate Agent · New Jersey · All rights reserved</div>
+        <div class="footer-copy">Each Coldwell Banker office is independently owned and operated.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COLDWELL BANKER BADGE STRIP -->
+<div class="cb-badge-strip">
+  <div class="cb-badge-inner">
+    <div class="cb-badge">
+      <div class="cb-logo-block">
+        <div class="cb-logo-top">COLDWELL</div>
+        <div class="cb-logo-bottom">BANKER</div>
+        <div class="cb-logo-tag">Real Estate</div>
+      </div>
+      <div class="cb-badge-text">
+        <div class="cb-badge-name">Angel Rodriguez</div>
+        <div class="cb-badge-sub">Licensed Real Estate Agent · New Jersey</div>
+      </div>
+      <div class="cb-divider"></div>
+      <div class="cb-equal-housing">
+        <svg class="cb-eh-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 3L3 12h3v13h7v-7h2v7h7V12h3L14 3z" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          <rect x="9" y="16" width="3" height="3" rx="0.5" fill="rgba(255,255,255,0.35)"/>
+          <rect x="16" y="16" width="3" height="3" rx="0.5" fill="rgba(255,255,255,0.35)"/>
+          <path d="M3 25h22" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        </svg>
+        <div class="cb-eh-text">Equal Housing Opportunity</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function handleContact(e){
+  e.preventDefault();
+  document.getElementById('cta-form-view').style.display='none';
+  const s=document.getElementById('cta-success');
+  s.style.display='block';
+  window.scrollTo({top:document.getElementById('contact').offsetTop-80,behavior:'smooth'});
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>
