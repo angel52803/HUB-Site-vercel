@@ -141,11 +141,11 @@ body{font-family:'Outfit',sans-serif;background:var(--surface);color:var(--text)
 
 /* ── OFFER CHIPS ── */
 .offer-chips{display:flex;flex-wrap:wrap;gap:10px}
-.offer-chip{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text);white-space:nowrap;position:relative;cursor:pointer;transition:border-color .15s,transform .15s;user-select:none}
+.offer-chip{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text);white-space:nowrap;cursor:pointer;transition:border-color .15s,transform .15s;user-select:none}
 .offer-chip:hover{border-color:var(--cb-accent);transform:translateY(-1px)}
+.offer-chip.active{border-color:var(--cb-accent)}
 .offer-chip span{font-size:16px}
-.offer-chip::after{content:attr(data-desc);position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-4px);background:var(--white);border:1px solid var(--border-2);color:var(--text-2);font-size:12px;line-height:1.6;padding:10px 14px;border-radius:8px;width:210px;text-align:left;white-space:normal;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
-.offer-chip:hover::after,.offer-chip.active::after{opacity:1;transform:translateX(-50%) translateY(0)}
+.chip-tooltip{position:fixed;z-index:9999;background:#1e2126;border:1px solid rgba(201,168,76,0.3);color:#c8c5be;font-size:13px;font-family:'Outfit',sans-serif;line-height:1.65;padding:11px 15px;border-radius:9px;width:220px;text-align:left;box-shadow:0 12px 32px rgba(0,0,0,0.6);pointer-events:none;opacity:0;transition:opacity .15s ease;display:none}
 
 /* ── LEAD MAGNETS ── */
 .magnets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
@@ -587,17 +587,53 @@ async function handleContact(e){
     btn.disabled=false;
   }
 }
-document.querySelectorAll('.offer-chip').forEach(chip=>{
-  chip.addEventListener('click',function(e){
-    e.stopPropagation();
-    const isActive=this.classList.contains('active');
-    document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
-    if(!isActive)this.classList.add('active');
+// Chip tooltips — body-level div avoids any clipping/z-index issues
+(function(){
+  const tip=document.createElement('div');
+  tip.className='chip-tooltip';
+  document.body.appendChild(tip);
+  let isTouch=false;
+  window.addEventListener('touchstart',()=>{isTouch=true;},{once:true,passive:true});
+  function place(chip){
+    const desc=chip.getAttribute('data-desc');
+    if(!desc)return;
+    tip.textContent=desc;
+    tip.style.display='block';
+    const r=chip.getBoundingClientRect();
+    let left=r.left+r.width/2-110;
+    let top=r.bottom+10;
+    const tw=220,th=tip.offsetHeight||70;
+    if(left<8)left=8;
+    if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
+    if(top+th>window.innerHeight-8)top=r.top-th-10;
+    tip.style.left=left+'px';
+    tip.style.top=top+'px';
+    tip.style.opacity='1';
+  }
+  function hide(){
+    tip.style.opacity='0';
+    tip.style.display='none';
+  }
+  document.querySelectorAll('.offer-chip').forEach(chip=>{
+    chip.addEventListener('mouseenter',()=>{if(!isTouch)place(chip);});
+    chip.addEventListener('mouseleave',()=>{if(!isTouch)hide();});
+    chip.addEventListener('click',e=>{
+      e.stopPropagation();
+      if(!isTouch)return;
+      if(chip.classList.contains('active')){chip.classList.remove('active');hide();}
+      else{
+        document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
+        chip.classList.add('active');
+        place(chip);
+      }
+    });
   });
-});
-document.addEventListener('click',()=>{
-  document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
-});
+  document.addEventListener('click',()=>{
+    document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
+    hide();
+  });
+  window.addEventListener('scroll',()=>{hide();document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));},{passive:true});
+})();
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const target=document.querySelector(this.getAttribute('href'));
