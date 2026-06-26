@@ -130,6 +130,11 @@ body{font-family:'Outfit',sans-serif;background:var(--surface);color:var(--text)
 .guarantee-title{font-family:'Outfit',sans-serif;font-size:22px;color:var(--green);margin-bottom:8px}
 .guarantee-body{font-size:14px;color:var(--green);line-height:1.75;opacity:.85}
 
+/* ── OFFER CHIPS ── */
+.offer-chips{display:flex;flex-wrap:wrap;gap:10px}
+.offer-chip{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text);white-space:nowrap}
+.offer-chip span{font-size:16px}
+
 /* ── LEAD MAGNETS ── */
 .magnets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
 .magnet-card{background:var(--white);border:1px solid var(--border-2);border-radius:14px;padding:28px;transition:border-color .15s,transform .15s;cursor:pointer;text-decoration:none;display:block}
@@ -391,20 +396,16 @@ footer{background:#0a0c0f;padding:48px 32px 0}
     <div class="section-eyebrow">The Elite Home Selling System™</div>
     <div class="section-title">Everything included.<br>Nothing left to chance.</div>
     <p class="section-sub">Most agents put your home on Zillow and hope. I run a proven 8-step system that creates competition among buyers and maximizes what you walk away with.</p>
-    <div class="offer-grid">
-      <div class="offer-item"><div class="offer-icon">📷</div><div><div class="offer-title">Professional photography + video</div><div class="offer-desc">HDR photos, twilight shot, and a full video walkthrough delivered within 48 hours of listing.</div><div class="offer-value">$800 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">🛋️</div><div><div class="offer-title">Staging consultation</div><div class="offer-desc">A professional stager walks your home room by room and builds your pre-listing prep plan.</div><div class="offer-value">$400 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">🚀</div><div><div class="offer-title">7-day pre-market campaign</div><div class="offer-desc">Your home is marketed to my buyer network before it ever hits MLS — so demand starts on day one.</div><div class="offer-value">$600 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">🔧</div><div><div class="offer-title">Repairs & prep coordination</div><div class="offer-desc">I manage every contractor, every appointment, every detail. You don't lift a finger.</div><div class="offer-value">$500 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">📊</div><div><div class="offer-title">Custom pricing strategy</div><div class="offer-desc">Hyper-local comp analysis and a pricing playbook designed to attract multiple offers.</div><div class="offer-value">$300 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">📣</div><div><div class="offer-title">Multi-channel marketing</div><div class="offer-desc">MLS, Zillow, Redfin, Instagram, Facebook, and an email blast to 500+ active buyers.</div><div class="offer-value">$1,200 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">📋</div><div><div class="offer-title">Weekly seller report</div><div class="offer-desc">Every Friday: showings, feedback, market updates, and next steps. You're never in the dark.</div><div class="offer-value">$200 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">🤝</div><div><div class="offer-title">Expert negotiation & closing</div><div class="offer-desc">I handle every offer, counter, contingency, and closing detail so you don't lose money at the table.</div><div class="offer-value">$2,000 value — included</div></div></div>
-      <div class="offer-item"><div class="offer-icon">📦</div><div><div class="offer-title">Moving fund & coordination</div><div class="offer-desc">I contribute toward your moving costs and personally coordinate your move so the transition is completely stress-free.</div><div class="offer-value">Included</div></div></div>
-    </div>
-    <div class="offer-total">
-      <div><div class="offer-total-label">Total value if purchased separately</div></div>
-      <div style="font-family:'Outfit',sans-serif;font-size:36px;color:var(--white);letter-spacing:-0.02em">$6,000+</div>
+    <div class="offer-chips">
+      <div class="offer-chip"><span>📷</span> Photography + video</div>
+      <div class="offer-chip"><span>🛋️</span> Staging consultation</div>
+      <div class="offer-chip"><span>🚀</span> 7-day pre-market campaign</div>
+      <div class="offer-chip"><span>🔧</span> Repairs & prep coordination</div>
+      <div class="offer-chip"><span>📊</span> Custom pricing strategy</div>
+      <div class="offer-chip"><span>📣</span> Multi-channel marketing</div>
+      <div class="offer-chip"><span>📋</span> Weekly seller report</div>
+      <div class="offer-chip"><span>🤝</span> Expert negotiation & closing</div>
+      <div class="offer-chip"><span>📦</span> Moving fund & coordination</div>
     </div>
   </div>
 </section>
