@@ -75,9 +75,18 @@ body{font-family:'Outfit',sans-serif;background:var(--surface);color:var(--text)
 .section-title{font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,40px);letter-spacing:-0.02em;color:var(--text);margin-bottom:16px;line-height:1.15}
 .section-sub{font-size:15px;line-height:1.65;color:var(--text-2);max-width:600px;margin-bottom:36px}
 
+/* ── GUARANTEE SOLO ── */
+.guarantee-solo{background:#0a0c0f;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.guarantee-solo-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.gs-badge{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cb-accent);margin-bottom:10px}
+.gs-headline{font-size:clamp(22px,3.5vw,34px);font-weight:700;color:var(--text);line-height:1.2;letter-spacing:-0.02em}
+.gs-headline em{font-style:italic;color:var(--cb-accent)}
+.gs-sub{font-size:14px;color:var(--text-3);margin-top:6px}
+@media(max-width:600px){.guarantee-solo-inner{flex-direction:column;text-align:center}}
+
 /* ── WHY SECTION ── */
 .why-section{background:var(--surface-2)}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:0}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:0}
 .why-card{background:var(--white);border:1px solid var(--border-2);border-radius:16px;padding:24px 22px;transition:border-color .15s,transform .15s}
 .why-card:hover{border-color:var(--cb-accent);transform:translateY(-2px)}
 .why-icon{font-size:32px;margin-bottom:18px}
@@ -298,17 +307,25 @@ footer{background:#0a0c0f;padding:48px 32px 0}
 </section>
 
 
+<!-- 45-DAY GUARANTEE -->
+<section class="section guarantee-solo" id="why-angel">
+  <div class="section-inner">
+    <div class="guarantee-solo-inner">
+      <div class="gs-left">
+        <div class="gs-badge">🛡️ The Performance Guarantee</div>
+        <div class="gs-headline">Qualified offer in <em>45 days</em> — or I cut my commission by 1%.</div>
+        <div class="gs-sub">No fine print. No exceptions.</div>
+      </div>
+      <a href="#contact" class="btn-primary">Hold me to it</a>
+    </div>
+  </div>
+</section>
+
 <!-- WHY ANGEL SECTION -->
-<section class="section why-section" id="why-angel">
+<section class="section why-section">
   <div class="section-inner">
     <div class="section-eyebrow">Why homeowners choose Angel</div>
-    <div class="section-title">A different kind of agent.<br>Built around <em style="font-style:italic;color:var(--cb-accent)">your</em> results.</div>
     <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🛡️</div>
-        <div class="why-title">45-Day Performance Guarantee</div>
-        <div class="why-body">If I don't bring you a qualified offer within 45 days, I cut my commission by 1%. No fine print. No exceptions. You only pay full commission when I deliver.</div>
-      </div>
       <div class="why-card">
         <div class="why-icon">📋</div>
         <div class="why-title">60-Day Contract — Not 6 Months</div>
@@ -320,9 +337,6 @@ footer{background:#0a0c0f;padding:48px 32px 0}
         <div class="why-body">I contribute toward your moving costs and personally coordinate your entire move — so closing day feels like a celebration, not a logistical nightmare.</div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:40px">
-      <a href="#contact" class="btn-primary">Book a free strategy call</a>
-    </div>
   </div>
 </section>
 
@@ -331,44 +345,13 @@ footer{background:#0a0c0f;padding:48px 32px 0}
   <div class="section-inner">
     <div class="section-eyebrow">Paid Marketing Strategy</div>
     <div class="section-title">Your home in front of thousands<br>of <em style="font-style:italic;color:var(--cb-accent)">ready-to-buy</em> buyers.</div>
-    <div class="marketing-grid">
-      <div class="marketing-channel">
-        <div class="mc-icon">📘</div>
-        <div class="mc-name">Facebook & Instagram Ads</div>
-<div class="mc-reach">Est. 8,000–15,000 impressions per listing</div>
-      </div>
-      <div class="marketing-channel">
-        <div class="mc-icon">🔍</div>
-        <div class="mc-name">Google Search & Display</div>
-<div class="mc-reach">Top placement on day one</div>
-      </div>
-      <div class="marketing-channel">
-        <div class="mc-icon">🎯</div>
-        <div class="mc-name">Retargeting Campaigns</div>
-<div class="mc-reach">30-day retargeting window</div>
-      </div>
-      <div class="marketing-channel">
-        <div class="mc-icon">📧</div>
-        <div class="mc-name">Buyer Email Blast</div>
-<div class="mc-reach">500+ active buyers notified</div>
-      </div>
-      <div class="marketing-channel">
-        <div class="mc-icon">🎬</div>
-        <div class="mc-name">Video & Reel Campaigns</div>
-<div class="mc-reach">Distributed across Instagram, Facebook & YouTube</div>
-      </div>
-      <div class="marketing-channel">
-        <div class="mc-icon">🏡</div>
-        <div class="mc-name">Premium Portal Placement</div>
-<div class="mc-reach">Featured on all major portals</div>
-      </div>
-    </div>
-    <div class="marketing-total">
-      <div class="mt-left">
-        <div class="mt-label">Combined estimated reach per listing</div>
-        <div class="mt-val">20,000+ potential buyers</div>
-      </div>
-      <a href="#contact" class="btn-primary">See how it works for your home</a>
+    <div class="offer-chips">
+      <div class="offer-chip"><span>📘</span> Facebook & Instagram Ads</div>
+      <div class="offer-chip"><span>🔍</span> Google Search & Display</div>
+      <div class="offer-chip"><span>🎯</span> Retargeting Campaigns</div>
+      <div class="offer-chip"><span>📧</span> Buyer Email Blast</div>
+      <div class="offer-chip"><span>🎬</span> Video & Reel Campaigns</div>
+      <div class="offer-chip"><span>🏡</span> Premium Portal Placement</div>
     </div>
   </div>
 </section>
