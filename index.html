@@ -141,8 +141,11 @@ body{font-family:'Outfit',sans-serif;background:var(--surface);color:var(--text)
 
 /* ── OFFER CHIPS ── */
 .offer-chips{display:flex;flex-wrap:wrap;gap:10px}
-.offer-chip{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text);white-space:nowrap}
+.offer-chip{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:14px;font-weight:500;color:var(--text);white-space:nowrap;position:relative;cursor:pointer;transition:border-color .15s,transform .15s;user-select:none}
+.offer-chip:hover{border-color:var(--cb-accent);transform:translateY(-1px)}
 .offer-chip span{font-size:16px}
+.offer-chip::after{content:attr(data-desc);position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(-4px);background:var(--white);border:1px solid var(--border-2);color:var(--text-2);font-size:12px;line-height:1.6;padding:10px 14px;border-radius:8px;width:210px;text-align:left;white-space:normal;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.offer-chip:hover::after,.offer-chip.active::after{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ── LEAD MAGNETS ── */
 .magnets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
@@ -345,12 +348,12 @@ footer{background:#0a0c0f;padding:48px 32px 0}
     <div class="section-eyebrow">Paid Marketing Strategy</div>
     <div class="section-title">Your home in front of thousands<br>of <em style="font-style:italic;color:var(--cb-accent)">ready-to-buy</em> buyers.</div>
     <div class="offer-chips">
-      <div class="offer-chip"><span>📘</span> Facebook & Instagram Ads</div>
-      <div class="offer-chip"><span>🔍</span> Google Search & Display</div>
-      <div class="offer-chip"><span>🎯</span> Retargeting Campaigns</div>
-      <div class="offer-chip"><span>📧</span> Buyer Email Blast</div>
-      <div class="offer-chip"><span>🎬</span> Video & Reel Campaigns</div>
-      <div class="offer-chip"><span>🏡</span> Premium Portal Placement</div>
+      <div class="offer-chip" data-desc="Hyper-targeted ads served to buyers actively searching in your zip code and home size — not random scrollers."><span>📘</span> Facebook & Instagram Ads</div>
+      <div class="offer-chip" data-desc="Your listing appears at the top of Google when buyers search for homes in your neighborhood. Paid placement, not luck."><span>🔍</span> Google Search & Display</div>
+      <div class="offer-chip" data-desc="Buyers who viewed your listing get followed across the web with your home's best photos for 30 days."><span>🎯</span> Retargeting Campaigns</div>
+      <div class="offer-chip" data-desc="500+ pre-qualified active buyers notified the moment your home is ready — before MLS goes live."><span>📧</span> Buyer Email Blast</div>
+      <div class="offer-chip" data-desc="Professional video walkthroughs turned into social ads distributed across Instagram, Facebook & YouTube."><span>🎬</span> Video & Reel Campaigns</div>
+      <div class="offer-chip" data-desc="Featured listings on Zillow, Redfin, and Realtor.com with paid boosts to stay at the top of search results."><span>🏡</span> Premium Portal Placement</div>
     </div>
   </div>
 </section>
@@ -362,15 +365,15 @@ footer{background:#0a0c0f;padding:48px 32px 0}
     <div class="section-title">Everything included.<br>Nothing left to chance.</div>
     <p class="section-sub">Most agents put your home on Zillow and hope. I run a proven 8-step system that creates competition among buyers and maximizes what you walk away with.</p>
     <div class="offer-chips">
-      <div class="offer-chip"><span>📷</span> Photography + video</div>
-      <div class="offer-chip"><span>🛋️</span> Staging consultation</div>
-      <div class="offer-chip"><span>🚀</span> 7-day pre-market campaign</div>
-      <div class="offer-chip"><span>🔧</span> Repairs & prep coordination</div>
-      <div class="offer-chip"><span>📊</span> Custom pricing strategy</div>
-      <div class="offer-chip"><span>📣</span> Multi-channel marketing</div>
-      <div class="offer-chip"><span>📋</span> Weekly seller report</div>
-      <div class="offer-chip"><span>🤝</span> Expert negotiation & closing</div>
-      <div class="offer-chip"><span>📦</span> Moving fund & coordination</div>
+      <div class="offer-chip" data-desc="HDR photos, twilight shot, and a full video walkthrough delivered within 48 hours of listing."><span>📷</span> Photography + video</div>
+      <div class="offer-chip" data-desc="A professional stager walks your home room by room and builds your pre-listing prep plan."><span>🛋️</span> Staging consultation</div>
+      <div class="offer-chip" data-desc="Your home reaches my buyer network before it ever hits MLS — so demand starts on day one."><span>🚀</span> 7-day pre-market campaign</div>
+      <div class="offer-chip" data-desc="I manage every contractor, every appointment, every detail. You don't lift a finger."><span>🔧</span> Repairs & prep coordination</div>
+      <div class="offer-chip" data-desc="Hyper-local comp analysis and a pricing playbook designed to attract multiple offers."><span>📊</span> Custom pricing strategy</div>
+      <div class="offer-chip" data-desc="MLS, Zillow, Redfin, Instagram, Facebook, and an email blast to 500+ active buyers."><span>📣</span> Multi-channel marketing</div>
+      <div class="offer-chip" data-desc="Every Friday: showings, feedback, market updates, and next steps. You're never in the dark."><span>📋</span> Weekly seller report</div>
+      <div class="offer-chip" data-desc="I handle every offer, counter, and contingency so you don't lose money at the table."><span>🤝</span> Expert negotiation & closing</div>
+      <div class="offer-chip" data-desc="I contribute toward your moving costs and personally coordinate your entire move."><span>📦</span> Moving fund & coordination</div>
     </div>
   </div>
 </section>
@@ -584,6 +587,17 @@ async function handleContact(e){
     btn.disabled=false;
   }
 }
+document.querySelectorAll('.offer-chip').forEach(chip=>{
+  chip.addEventListener('click',function(e){
+    e.stopPropagation();
+    const isActive=this.classList.contains('active');
+    document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
+    if(!isActive)this.classList.add('active');
+  });
+});
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.offer-chip.active').forEach(c=>c.classList.remove('active'));
+});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const target=document.querySelector(this.getAttribute('href'));
