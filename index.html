@@ -506,22 +506,22 @@ footer{background:#0a0c0f;padding:48px 32px 0}
     <p class="section-sub" style="text-align:center;margin:0 auto 36px">Book a free 15-minute strategy call. No pressure, no obligation — just a clear picture of what your home is worth and what the right move looks like for you.</p>
     <div class="cta-form">
       <div id="cta-form-view">
-        <form onsubmit="handleContact(event)">
+        <form id="contact-form" onsubmit="handleContact(event)">
           <div class="form-row" style="margin-bottom:12px">
-            <div class="form-group"><label>First name</label><input type="text" placeholder="Sarah" required style="margin-bottom:0"></div>
-            <div class="form-group"><label>Last name</label><input type="text" placeholder="Johnson" required style="margin-bottom:0"></div>
+            <div class="form-group"><label>First name</label><input type="text" name="first_name" placeholder="Sarah" required style="margin-bottom:0"></div>
+            <div class="form-group"><label>Last name</label><input type="text" name="last_name" placeholder="Johnson" required style="margin-bottom:0"></div>
           </div>
-          <div class="form-group"><label>Phone number</label><input type="tel" placeholder="(201) 555-0100" required></div>
-          <div class="form-group"><label>Email address</label><input type="email" placeholder="sarah@email.com" required></div>
-          <div class="form-group"><label>Your home address</label><input type="text" placeholder="123 Maple St, Montclair, NJ" required></div>
+          <div class="form-group"><label>Phone number</label><input type="tel" name="phone" placeholder="(201) 555-0100" required></div>
+          <div class="form-group"><label>Email address</label><input type="email" name="email" placeholder="sarah@email.com" required></div>
+          <div class="form-group"><label>Your home address</label><input type="text" name="home_address" placeholder="123 Maple St, Jersey City, NJ" required></div>
           <div class="form-group"><label>Thinking of selling within…</label>
-            <select style="margin-bottom:0">
+            <select name="timeframe" style="margin-bottom:0">
               <option>Select a timeframe</option>
               <option>3 months</option><option>6 months</option><option>12 months</option><option>Just exploring</option>
             </select>
           </div>
-          <div class="form-group" style="margin-top:12px"><label>Anything else I should know? (optional)</label><textarea placeholder="Tell me a bit about your home or situation…"></textarea></div>
-          <button type="submit" class="submit-btn">Book my free strategy call →</button>
+          <div class="form-group" style="margin-top:12px"><label>Anything else I should know? (optional)</label><textarea name="message" placeholder="Tell me a bit about your home or situation…"></textarea></div>
+          <button type="submit" class="submit-btn" id="submit-btn">Book my free strategy call →</button>
         </form>
         <p class="form-note">No spam. No obligation. I'll call you personally within the hour.</p>
       </div>
@@ -596,12 +596,28 @@ footer{background:#0a0c0f;padding:48px 32px 0}
 
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
-function handleContact(e){
+async function handleContact(e){
   e.preventDefault();
-  document.getElementById('cta-form-view').style.display='none';
-  const s=document.getElementById('cta-success');
-  s.style.display='block';
-  window.scrollTo({top:document.getElementById('contact').offsetTop-80,behavior:'smooth'});
+  const btn=document.getElementById('submit-btn');
+  btn.textContent='Sending…';
+  btn.disabled=true;
+  const form=document.getElementById('contact-form');
+  const data=new FormData(form);
+  try{
+    const res=await fetch('https://formspree.io/f/maqgopbe',{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(res.ok){
+      document.getElementById('cta-form-view').style.display='none';
+      const s=document.getElementById('cta-success');
+      s.style.display='block';
+      window.scrollTo({top:document.getElementById('contact').offsetTop-80,behavior:'smooth'});
+    } else {
+      btn.textContent='Something went wrong — try again';
+      btn.disabled=false;
+    }
+  } catch(err){
+    btn.textContent='Something went wrong — try again';
+    btn.disabled=false;
+  }
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
